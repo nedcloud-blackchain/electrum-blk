@@ -798,10 +798,10 @@ def time_difference(distance_in_time, include_seconds):
 mainnet_block_explorers = {
     'Bitinfocharts.com': ('https://bitinfocharts.com/blackcoin/',
                         {'tx': 'tx/', 'addr': 'address/'}),
-    'cryptoID': ('https://chainz.cryptoid.info/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
-    'system default': ('https://chainz.cryptoid.info/',
-                        {'tx': 'tx/', 'addr': 'address/'}),
+    'cryptoID': ('https://chainz.cryptoid.info/blk/',
+                        {'tx': 'tx.dws?', 'addr': 'address.dws?'}),
+    'system default': ('https://chainz.cryptoid.info/blk/',
+                        {'tx': 'tx.dws?', 'addr': 'address.dws?'}),
 }
 
 testnet_block_explorers = {
@@ -833,7 +833,7 @@ def block_explorer(config: 'SimpleConfig') -> Optional[str]:
     """
     if config.get('block_explorer_custom') is not None:
         return None
-    default_ = 'Blockstream.info'
+    default_ = 'cryptoID'
     be_key = config.get('block_explorer', default_)
     be_tuple = block_explorer_info().get(be_key)
     if be_tuple is None:
